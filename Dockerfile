@@ -1,6 +1,6 @@
 From amazonlinux
 
-MAINTAINER shuying <shuying@movarkstyle.com>
+MAINTAINER skydreamangle <sofia.lin819@gmail.com>
 
 RUN yum update -y && yum upgrade -y
 RUN cp /usr/share/zoneinfo/Asia/Taipei /etc/localtime
@@ -54,13 +54,13 @@ RUN cd /tmp && \
     make install
 RUN cd /tmp/redis-stable/utils && ./install_server.sh
 
-RUN mkdir -p /var/www/html/gamma/daf
-COPY ./daf /var/www/html/gamma/daf
+RUN mkdir -p /var/www/html/gamma/yoursourcecodefoldername
+COPY ./yoursourcecodefoldername /var/www/html/gamma/yoursourcecodefoldername
 
-WORKDIR /var/www/html/gamma/daf
+WORKDIR /var/www/html/gamma/yoursourcecodefoldername
 
-COPY ./manifest/config/gamma_config.ini /var/www/html/gamma/daf/app/config/gamma_config.ini
-COPY ./manifest/config/production_config.ini /var/www/html/gamma/daf/app/config/production_config.ini
+COPY ./manifest/config/gamma_config.ini /var/www/html/gamma/yoursourcecodefoldername/app/config/gamma_config.ini
+COPY ./manifest/config/production_config.ini /var/www/html/gamma/yoursourcecodefoldername/app/config/production_config.ini
 
 COPY manifest/entrypoint.sh /entrypoint.sh
 RUN chmod 0755 /entrypoint.sh
