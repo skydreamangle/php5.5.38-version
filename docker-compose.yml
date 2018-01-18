@@ -25,9 +25,7 @@ services:
         container_name: web
         image: docker-images
         volumes:
-            - "($pwd)/yoursourcecodefoldername:/var/www/html/gamma/yoursourcecodefoldername"
-            - "($pwd)/yoursourcecodefoldername/manifest/config/gamma_config.ini:/var/www/html/gamma/yoursourcecodefoldername/app/config/gamma_config.ini"
-            - "($pwd)/yoursourcecodefoldername/manifest/config/production_config.ini:/var/www/html/gamma/yoursourcecodefoldername/app/config/production_config.ini"
+            - "($pwd):/var/www/html/yoursourcecodefoldername"
         ports:
             - "7000:80"
         restart: always
