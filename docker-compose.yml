@@ -1,0 +1,33 @@
+version: '3'
+services:
+    redis:
+        container_name: redis
+        image: redis:latest
+        environment:
+            - "TZ=Asia/Taipei"
+        restart: always
+        ports:
+            - 6379:6379
+
+    memcached:
+        container_name: memcached
+        image: memcached
+        environment:
+            - "TZ=Asia/Taipei"
+        restart: always
+        ports:
+            - 11211:11211
+
+    dafweb:
+        depends_on:
+            - redis
+            - memcached
+        container_name: dafweb
+        image: daf-docker-images
+        volumes:
+            - "/Users/shuying/Documents/movark/github/daf-docker-version:/var/www/html/gamma/daf"
+            - "/Users/shuying/Documents/movark/github/daf-docker-version/manifest/config/gamma_config.ini:/var/www/html/gamma/daf/app/config/gamma_config.ini"
+            - "/Users/shuying/Documents/movark/github/daf-docker-version/manifest/config/production_config.ini:/var/www/html/gamma/daf/app/config/production_config.ini"
+        ports:
+            - "7000:80"
+        restart: always
