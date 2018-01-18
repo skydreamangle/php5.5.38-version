@@ -54,13 +54,10 @@ RUN cd /tmp && \
     make install
 RUN cd /tmp/redis-stable/utils && ./install_server.sh
 
-RUN mkdir -p /var/www/html/gamma/yoursourcecodefoldername
-COPY ./yoursourcecodefoldername /var/www/html/gamma/yoursourcecodefoldername
+RUN mkdir -p /var/www/html/yoursourcecodefoldername
+COPY ./yoursourcecodefoldername /var/www/html/yoursourcecodefoldername
 
-WORKDIR /var/www/html/gamma/yoursourcecodefoldername
-
-COPY ./manifest/config/gamma_config.ini /var/www/html/gamma/yoursourcecodefoldername/app/config/gamma_config.ini
-COPY ./manifest/config/production_config.ini /var/www/html/gamma/yoursourcecodefoldername/app/config/production_config.ini
+WORKDIR /var/www/html/yoursourcecodefoldername
 
 COPY manifest/entrypoint.sh /entrypoint.sh
 RUN chmod 0755 /entrypoint.sh
